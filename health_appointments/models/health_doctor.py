@@ -11,3 +11,4 @@ class HealthDoctor(models.Model):
         string="Doctor Specialties",
         help="Indicate the medicine expertise of each doctor.",
     )
+    schedule_day_ids = fields.One2many("health.doctor.schedule", "doctor_id", string="Doctor Schedule Days")
