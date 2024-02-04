@@ -6,7 +6,7 @@
         <record id="health_specialty_tree_view" model="ir.ui.view">
             <field name="model">health.specialty</field>
             <field name="arch" type="xml">
-                <tree string="Health Specialty">
+                <tree string="Health Specialty" editable="bottom">
                     <field name="name"/>
                     <field name="description"/>
                 </tree>
