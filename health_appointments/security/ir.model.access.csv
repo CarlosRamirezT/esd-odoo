@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_health_appointments_specialty,health_appointments.specialty,model_health_appointments_health_specialty,base.group_user,1,1,1,1
+access_health_appointments_specialty_manager,health_appointments.specialty.manager,model_health_appointments_health_specialty,health_appointments.group_health_manager,1,1,1,1
+access_health_appointments_specialty_user,health_appointments.specialty.user,model_health_appointments_health_specialty,health_appointments.group_health_user,1,0,0,0
