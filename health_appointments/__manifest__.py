@@ -12,5 +12,6 @@
     "version": "15.0.0.1",
     "depends": ["base"],
     "data": [
+        "security/health_security.xml",
     ],
 }
