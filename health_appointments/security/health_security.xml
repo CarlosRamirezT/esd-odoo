@@ -3,7 +3,7 @@
     <data>
 
         <record model="ir.module.category" id="health_category">
-            <field name="name">Helps you handle roles within your hospital.</field>
+            <field name="name">Health Appointment</field>
         </record>
 
         <record id="group_health_user" model="res.groups">
@@ -16,6 +16,7 @@
             <field name="name">Health Appointments Manager</field>
             <field name="category_id" ref="health_category"/>
             <field name="implied_ids" eval="[(4, ref('group_health_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
         </record>
 
     </data>
