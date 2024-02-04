@@ -5,6 +5,6 @@ class HealthSpecialty(models.Model):
     _name = "health.specialty"
     _description = "Doctor's Specialties"
 
-    name = fields.char("Specialty Name")
-    description = fields.text("Specialty Details")
+    name = fields.Char("Specialty Name")
+    help = fields.Text("Specialty Details")
 

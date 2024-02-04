@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="0">
+    <data>
 
-        <record model="ir.module.category" id="health_appointments.health_category">
-            <field name="description">Helps you handle roles within your hospital.</field>
+        <record model="ir.module.category" id="health_category">
+            <field name="name">Helps you handle roles within your hospital.</field>
         </record>
 
         <record id="group_health_user" model="res.groups">
             <field name="name">Health Appointments User</field>
-            <field name="category_id" ref="health_appointments.health_category"/>
+            <field name="category_id" ref="health_category"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
 
         <record id="group_health_manager" model="res.groups">
             <field name="name">Health Appointments Manager</field>
-            <field name="category_id" ref="health_appointments.health_category"/>
-            <field name="implied_ids" eval="[(4, ref('health_appointments.group_health_user'))]"/>
+            <field name="category_id" ref="health_category"/>
+            <field name="implied_ids" eval="[(4, ref('group_health_user'))]"/>
         </record>
 
     </data>
