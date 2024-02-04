@@ -13,5 +13,8 @@
     "depends": ["base"],
     "data": [
         "security/health_security.xml",
+        "security/ir.model.access.csv",
+        "views/health_specialty.xml"
     ],
+    "application": True,
 }
