@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="health_appointments.list">
+      <field name="name">health_appointments list</field>
+      <field name="model">health_appointments.health_appointments</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="health_appointments.action_window">
+      <field name="name">health_appointments window</field>
+      <field name="res_model">health_appointments.health_appointments</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="health_appointments.action_server">
+      <field name="name">health_appointments server</field>
+      <field name="model_id" ref="model_health_appointments_health_appointments"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="health_appointments" id="health_appointments.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="health_appointments.menu_1" parent="health_appointments.menu_root"/>
+    <menuitem name="Menu 2" id="health_appointments.menu_2" parent="health_appointments.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="health_appointments.menu_1_list" parent="health_appointments.menu_1"
+              action="health_appointments.action_window"/>
+    <menuitem name="Server to list" id="health_appointments" parent="health_appointments.menu_2"
+              action="health_appointments.action_server"/>
+-->
+  </data>
+</odoo>
