@@ -6,6 +6,7 @@ class HealthDoctor(models.Model):
     _inherits = {"res.partner": "partner_id"}
     _description = "Your hospital doctors"
 
+    is_doctor = fields.Boolean("Is a doctor", readonly=True)
     specialty_ids = fields.Many2many(
         comodel_name="health.specialty",
         relation="health_doctor_specialty_rel",

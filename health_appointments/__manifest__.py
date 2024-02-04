@@ -14,7 +14,8 @@
     "data": [
         "security/health_security.xml",
         "security/ir.model.access.csv",
-        "views/health_specialty.xml"
+        "views/health_specialty.xml",
+        "views/health_doctors.xml"
     ],
     "application": True,
 }

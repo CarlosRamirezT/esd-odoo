@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <data>
+
+        <record id="view_health_doctor_tree" model="ir.ui.view">
+            <field name="name">health.doctor.tree</field>
+            <field name="model">health.doctor</field>
+            <field name="arch" type="xml">
+                <tree string="Doctors" editable="bottom">
+                    <field name="name" string="Name"/>
+                    <field name="is_doctor"/>
+                    <field name="phone" class="o_force_ltr" optional="show"/>
+                    <field name="email" optional="show"/>
+                    <field name="specialty_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_health_doctor" model="ir.actions.act_window">
+            <field name="name">Doctors</field>
+            <field name="res_model">health.doctor</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_health_doctor_tree"/>
+            <field name="domain">[('is_doctor', '=', 1)]</field>
+            <field name="context">{'default_is_doctor': 1}</field>
+        </record>
+
+        <menuitem
+                id="menu_health_doctor"
+                name="Doctors"
+                sequence="0"
+                parent="menu_health_doctors"
+                action="action_health_doctor"
+                groups="group_health_manager"
+        />
+
+    </data>
+
+</odoo>
