@@ -1,12 +1,12 @@
 from odoo import fields, models
 
-
 class HealthDoctor(models.Model):
     _name = "health.doctor"
-    _inherits = {"res.partner": "partner_id"}
     _description = "Your hospital doctors"
 
-    is_doctor = fields.Boolean("Is a doctor", readonly=True)
+    name = fields.Char("Name", required=True)
+    last_name = fields.Char("Last Name", required=True)
+    identification = fields.Char("Identification", required=True)
     specialty_ids = fields.Many2many(
         comodel_name="health.specialty",
         relation="health_doctor_specialty_rel",
