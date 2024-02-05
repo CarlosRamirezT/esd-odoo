@@ -9,10 +9,14 @@ class HealthAppointment(models.Model):
     _description = "Manage your patient's appointments"
 
     name = fields.Char(
-        "Name", readonly=True,
+        "Name",
+        readonly=True,
     )
     display_name = fields.Char(
-        "Display Name", readonly=True, compute="_compute_name", store=True
+        "Display Name",
+        readonly=True,
+        compute="_compute_name",
+        store=True,
     )
     patient_id = fields.Many2one(
         "res.partner",
