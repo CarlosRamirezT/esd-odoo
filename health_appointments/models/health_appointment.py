@@ -52,25 +52,13 @@ class HealthAppointment(models.Model):
     @api.model
     def create(self, vals):
         new_code = self._generate_appointment_code()
-        vals["name"] = new_code
+        vals.update(name=new_code)
         return super(HealthAppointment, self).create(vals)
 
     @api.depends("patient_id", "doctor_id", "date")
     def _compute_name(self):
         for appointment in self:
-            if (
-                appointment.patient_id
-                and appointment.doctor_id
-                and appointment.date
-            ):
-                new_name = (
-                    f"{appointment.patient_id.name}'s Appointment with "
-                    f"{appointment.doctor_id.name} "
-                    f"on {appointment.date}"
-                )
-            else:
-                new_name = False
-            appointment.display_name = new_name
+            appointment.display_name = self._get_appointment_name()
 
     @api.constrains("doctor_id", "date", "time")
     def _check_doctor_availability(self):
@@ -99,3 +87,17 @@ class HealthAppointment(models.Model):
     def _generate_appointment_code(self):
         chars = string.digits
         return "".join(random.choice(chars) for _ in range(8))
+
+    def _get_appointment_name(self):
+        if (
+                self.patient_id
+                and self.doctor_id
+                and self.date
+        ):
+            return (
+                f"{self.patient_id.name}'s Appointment with "
+                f"{self.doctor_id.name} "
+                f"on {self.date}"
+            )
+        else:
+            return False
