@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!--    Main App Menu  -->
+
+    <menuitem
+            id="menu_health_appointments_main"
+            name="Health Appointments"
+            sequence="2"
+            groups="group_health_manager"
+            action="action_health_appointment"
+    />
+
+        <!--    Doctor Related Menus  -->
+
+        <menuitem
+                id="menu_health_doctors"
+                name="Doctors"
+                sequence="0"
+                parent="menu_health_appointments_main"
+                groups="group_health_manager"
+        />
+
+            <menuitem
+                    id="menu_health_specialty"
+                    name="Doctor's Specialties"
+                    sequence="0"
+                    parent="menu_health_doctors"
+                    action="action_health_specialty"
+                    groups="group_health_manager"
+            />
+
+            <menuitem
+                    id="menu_health_doctor"
+                    name="Doctors"
+                    sequence="0"
+                    parent="menu_health_doctors"
+                    action="action_health_doctor"
+                    groups="group_health_manager"
+            />
+
+        <!--    Patients and Appointments Menus  -->
+
+        <menuitem
+                id="menu_health_patients_section"
+                name="Patients"
+                sequence="0"
+                parent="menu_health_appointments_main"
+                groups="group_health_manager"
+        />
+
+            <menuitem
+                    id="menu_health_patients"
+                    name="Patients"
+                    sequence="0"
+                    parent="menu_health_patients_section"
+                    groups="group_health_user"
+                    action="action_health_patient"
+            />
+
+            <menuitem
+                    id="menu_health_appointment"
+                    name="Appointments"
+                    sequence="0"
+                    parent="menu_health_patients_section"
+                    groups="group_health_user"
+                    action="action_health_appointment"
+            />
+
+</odoo>

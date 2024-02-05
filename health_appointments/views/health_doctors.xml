@@ -62,15 +62,6 @@
             />
         </record>
 
-        <menuitem
-                id="menu_health_doctor"
-                name="Doctors"
-                sequence="0"
-                parent="menu_health_doctors"
-                action="action_health_doctor"
-                groups="group_health_manager"
-        />
-
     </data>
 
 </odoo>

@@ -49,23 +49,6 @@
             <field name="domain">[('is_patient', '=', 1)]</field>
         </record>
 
-        <menuitem
-                id="menu_health_patients_section"
-                name="Patients"
-                sequence="0"
-                parent="menu_health_appointments_main"
-                groups="group_health_manager"
-        />
-
-            <menuitem
-                    id="menu_health_patients"
-                    name="Patients"
-                    sequence="0"
-                    parent="menu_health_patients_section"
-                    groups="group_health_user"
-                    action="action_health_patient"
-            />
-
     </data>
 
 </odoo>

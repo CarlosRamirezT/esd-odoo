@@ -18,6 +18,7 @@
         "views/health_doctors.xml",
         "views/health_patients.xml",
         "views/health_appointment.xml",
+        "views/module_menus.xml",
     ],
     "demo": [
         "demo/demo_health_specialty.xml",

@@ -20,30 +20,6 @@
             <field name="view_id" ref="health_specialty_tree_view"/>
         </record>
 
-        <menuitem
-                id="menu_health_appointments_main"
-                name="Health Appointments"
-                sequence="2"
-                groups="group_health_manager"
-        />
-
-            <menuitem
-                    id="menu_health_doctors"
-                    name="Doctors"
-                    sequence="0"
-                    parent="menu_health_appointments_main"
-                    groups="group_health_manager"
-            />
-
-            <menuitem
-                    id="menu_health_specialty"
-                    name="Doctor's Specialties"
-                    sequence="0"
-                    parent="menu_health_doctors"
-                    action="action_health_specialty"
-                    groups="group_health_manager"
-            />
-
     </data>
 
 </odoo>

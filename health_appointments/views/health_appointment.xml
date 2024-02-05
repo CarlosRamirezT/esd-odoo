@@ -55,16 +55,6 @@
             />
         </record>
 
-
-        <menuitem
-                id="menu_health_appointment"
-                name="Appointments"
-                sequence="0"
-                parent="menu_health_patients_section"
-                groups="group_health_user"
-                action="action_health_appointment"
-        />
-
     </data>
 
 </odoo>
