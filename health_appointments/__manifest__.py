@@ -10,12 +10,15 @@
     "website": "https://github.com/CarlosRamirezT/esd-odoo",
     "category": "Uncategorized",
     "version": "15.0.0.1",
-    "depends": ["base"],
+    "depends": ["base", "mail"],
     "data": [
         "security/health_security.xml",
         "security/ir.model.access.csv",
         "views/health_specialty.xml",
         "views/health_doctors.xml"
+    ],
+    "demo": [
+        "demo/demo_health_specialty.xml",
     ],
     "application": True,
 }
