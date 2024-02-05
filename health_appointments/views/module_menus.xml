@@ -7,7 +7,7 @@
             id="health_appointments_main_menu"
             name="Health Appointments"
             sequence="2"
-            groups="health_appointments_group_manager"
+            groups="health_appointments_group_user"
             action="health_appointment_action"
     />
 
@@ -18,7 +18,7 @@
                 name="Doctors"
                 sequence="0"
                 parent="health_appointments_main_menu"
-                groups="health_appointments_group_manager"
+                groups="health_appointments_group_user"
         />
 
             <menuitem
@@ -27,7 +27,7 @@
                     sequence="0"
                     parent="health_doctors_menu"
                     action="health_specialty_action"
-                    groups="health_appointments_group_manager"
+                    groups="health_appointments_group_user"
             />
 
             <menuitem
@@ -36,7 +36,7 @@
                     sequence="0"
                     parent="health_doctors_menu"
                     action="health_doctor_action"
-                    groups="health_appointments_group_manager"
+                    groups="health_appointments_group_user"
             />
 
         <!--    Patients and Appointments Menus  -->
@@ -46,7 +46,7 @@
                 name="Patients"
                 sequence="0"
                 parent="health_appointments_main_menu"
-                groups="health_appointments_group_manager"
+                groups="health_appointments_group_user"
         />
 
             <menuitem
