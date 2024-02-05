@@ -1,4 +1,39 @@
-# esd-odoo
+# How to Install
+
+- Install and setup odoo 
+  - (Mac). https://ajscript.com/odoo/theme/how-to-install-odoo-on-mac-os/
+  - Or follow Odoo's official documentation: https://www.odoo.com/documentation/15.0/administration/install/source.html
+- Open a new terminal.
+- Go to your working directory.
+  ```
+  $ cd /Users/your_user/Documents/your/working/directory
+  ```
+- Clone this repository.
+  ```
+  $ git clone https://github.com/CarlosRamirezT/esd-odoo.git
+  ```
+- Add the repository path to the addons_path in your config file along with odoo base models. ```/Users/youruser/your/working/directory/odoo-15.conf```
+  ```
+  addons_path = /Users/your_user/Documents/your/working/directory/odoo/addons,/Users/your_user/Documents/your/working/directory/odoo/odoo/addons,/Users/your_user/Documents/your/working/directory/esd-odoo
+  ```
+- Add the repository path to the addons_path in your config file along with odoo base models. ```/Users/youruser/your/working/directory/odoo-15.conf````
+  ```
+  addons_path = /Users/your_user/Documents/your/working/directory/odoo/addons,/Users/your_user/Documents/your/working/directory/odoo/odoo/addons,/Users/your_user/Documents/your/working/directory/esd-odoo
+  ````
+- Install the module.
+  - Install using CLI.
+    ```
+      $ python odoo-bin -d name-of-db -i health_appointments
+    ```
+  - Install from the Apps Portal in Odoo.
+    - Sign in to your database.
+    - Go to Apps.
+    - Search for ```Health Appointments```
+    - Click Install.
+      
+    ![img18.png](src%2Fimages%2Fmanifest_images%2Fimg18.png)
+
+# Health Appointments Manager
 
 # Manage User Permissions.
     
@@ -30,7 +65,7 @@ Health Appointments > Doctors > Doctors
 ![img_5.png](src%2Fimages%2Fmanifest_images%2Fimg_5.png)
 
 - Create or Edit your doctor's information.
-- Configure their working schedule for appointments.
+  - Configure their working schedule for appointments.
 
 ![img_7.png](src%2Fimages%2Fmanifest_images%2Fimg_7.png)
 
