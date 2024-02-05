@@ -26,7 +26,7 @@
                     name="Doctor's Specialties"
                     sequence="0"
                     parent="health_doctors_menu"
-                    action="health_specialty_menu"
+                    action="health_specialty_action"
                     groups="health_appointments_group_manager"
             />
 
@@ -62,9 +62,9 @@
                     id="menu_health_appointment"
                     name="Appointments"
                     sequence="0"
-                    parent="menu_health_patients_section"
+                    parent="health_patients_section_menu"
                     groups="health_appointments_group_user"
-                    action="action_health_appointment"
+                    action="health_appointment_action"
             />
 
 </odoo>

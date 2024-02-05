@@ -61,7 +61,7 @@ class HealthAppointment(models.Model):
     @api.depends("patient_id", "doctor_id", "date")
     def _compute_name(self):
         for appointment in self:
-            appointment.display_name = self._get_appointment_name()
+            appointment.display_name = appointment._get_appointment_name()
 
     # selection and get methods
 
