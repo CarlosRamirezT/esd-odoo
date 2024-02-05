@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+ <odoo>
+    <record id="doctor_demo_1" model="health.doctor">
+        <field name="name">John</field>
+        <field name="last_name">Doe</field>
+        <field name="identification">ID-001</field>
+        <field name="specialty_ids" eval="[(4, ref('demo_health_specialty_01')), (4, ref('demo_health_specialty_03'))]"/>
+        <field name="schedule_day_ids" eval="[(0, 0, {'day_of_week': '0', 'shift_start': 9, 'shift_end': 17}),
+                                                (0, 0, {'day_of_week': '1', 'shift_start': 9, 'shift_end': 17})]"/>
+    </record>
+
+    <record id="doctor_demo_2" model="health.doctor">
+        <field name="name">Jane</field>
+        <field name="last_name">Smith</field>
+        <field name="identification">ID-002</field>
+        <field name="specialty_ids" eval="[(4, ref('demo_health_specialty_02')), (4, ref('demo_health_specialty_04'))]"/>
+        <field name="schedule_day_ids" eval="[(0, 0, {'day_of_week': '2', 'shift_start': 9.5, 'shift_end': 17.5}),
+                                                (0, 0, {'day_of_week': '3', 'shift_start': 9.5, 'shift_end': 17.5})]"/>
+    </record>
+
+    <record id="doctor_demo_3" model="health.doctor">
+        <field name="name">Michael</field>
+        <field name="last_name">Johnson</field>
+        <field name="identification">ID-003</field>
+        <field name="specialty_ids" eval="[(4, ref('demo_health_specialty_03')), (4, ref('demo_health_specialty_05'))]"/>
+        <field name="schedule_day_ids" eval="[(0, 0, {'day_of_week': '4', 'shift_start': 10, 'shift_end': 18}),
+                                                (0, 0, {'day_of_week': '5', 'shift_start': 10, 'shift_end': 18})]"/>
+    </record>
+
+    <record id="doctor_demo_4" model="health.doctor">
+        <field name="name">Sarah</field>
+        <field name="last_name">Williams</field>
+        <field name="identification">ID-004</field>
+        <field name="specialty_ids" eval="[(4, ref('demo_health_specialty_01')), (4, ref('demo_health_specialty_04'))]"/>
+        <field name="schedule_day_ids" eval="[(0, 0, {'day_of_week': '0', 'shift_start': 8, 'shift_end': 16}),
+                                                (0, 0, {'day_of_week': '1', 'shift_start': 8, 'shift_end': 16})]"/>
+    </record>
+
+    <record id="doctor_demo_5" model="health.doctor">
+        <field name="name">David</field>
+        <field name="last_name">Martinez</field>
+        <field name="identification">ID-005</field>
+        <field name="specialty_ids" eval="[(4, ref('demo_health_specialty_02')), (4, ref('demo_health_specialty_05'))]"/>
+        <field name="schedule_day_ids" eval="[(0, 0, {'day_of_week': '2', 'shift_start': 8.5, 'shift_end': 16.5}),
+                                                (0, 0, {'day_of_week': '3', 'shift_start': 8.5, 'shift_end': 16.5})]"/>
+    </record>
+</odoo>
+
+
+</odoo>

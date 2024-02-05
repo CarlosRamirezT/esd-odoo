@@ -19,6 +19,7 @@
     ],
     "demo": [
         "demo/demo_health_specialty.xml",
+        "demo/demo_health_doctor.xml",
     ],
     "application": True,
 }
