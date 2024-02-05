@@ -63,21 +63,9 @@ class HealthAppointment(models.Model):
     @api.constrains("doctor_id", "date", "time")
     def _check_doctor_availability(self):
         for appointment in self:
-            doctor_schedule = self.env[
-                "health.doctor.schedule"
-            ].search(
-                [
-                    ("doctor_id", "=", appointment.doctor_id.id),
-                    (
-                        "day_of_week",
-                        "=",
-                        str(appointment.date.weekday()),
-                    ),
-                    ("shift_start", "<=", appointment.time),
-                    ("shift_end", ">", appointment.time),
-                ]
-            )
-            if not doctor_schedule:
+            if not self.doctor_id.is_available(
+                date=appointment.date, hour=appointment.time
+            ):
                 raise exceptions.ValidationError(
                     "The selected doctor is not available at the appointment time. "
                     "Please select another time or doctor."
@@ -89,11 +77,7 @@ class HealthAppointment(models.Model):
         return "".join(random.choice(chars) for _ in range(8))
 
     def _get_appointment_name(self):
-        if (
-                self.patient_id
-                and self.doctor_id
-                and self.date
-        ):
+        if self.patient_id and self.doctor_id and self.date:
             return (
                 f"{self.patient_id.name}'s Appointment with "
                 f"{self.doctor_id.name} "

@@ -21,3 +21,27 @@ class HealthDoctor(models.Model):
         "doctor_id",
         string="Doctor Schedule Days",
     )
+
+    def is_available(self, date, hour):
+        """
+        Checks whether a doctor in available
+        a certain date at a certain hour.
+
+        Args:
+            date (date object): date to be checked
+            hour (float date): hour to be checked
+
+        Returns: health.doctor.schedule object if available, otherwise empty list.
+        """
+        return self.env["health.doctor.schedule"].search(
+            [
+                ("doctor_id", "=", self.id),
+                (
+                    "day_of_week",
+                    "=",
+                    str(date.weekday()),
+                ),
+                ("shift_start", "<=", hour),
+                ("shift_end", ">", hour),
+            ]
+        )
