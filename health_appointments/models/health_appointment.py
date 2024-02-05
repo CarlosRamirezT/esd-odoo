@@ -1,4 +1,4 @@
-from odoo import api, models, fields
+from odoo import api, models, fields, exceptions
 
 
 class HealthAppointment(models.Model):
@@ -55,3 +55,26 @@ class HealthAppointment(models.Model):
             else:
                 new_name = False
             appointment.name = new_name
+
+    @api.constrains("doctor_id", "date", "time")
+    def _check_doctor_availability(self):
+        for appointment in self:
+            doctor_schedule = self.env[
+                "health.doctor.schedule"
+            ].search(
+                [
+                    ("doctor_id", "=", appointment.doctor_id.id),
+                    (
+                        "day_of_week",
+                        "=",
+                        str(appointment.date.weekday()),
+                    ),
+                    ("shift_start", "<=", appointment.time),
+                    ("shift_end", ">", appointment.time),
+                ]
+            )
+            if not doctor_schedule:
+                raise exceptions.ValidationError(
+                    "The selected doctor is not available at the appointment time. "
+                    "Please select another time or doctor."
+                )
