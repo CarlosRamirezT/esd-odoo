@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="demo_health_specialty_01" model="health.specialty">
+        <field name="name">Cardiology</field>
+        <field name="description">Works with the heart.</field>
+    </record>
+
+    <record id="demo_health_specialty_02" model="health.specialty">
+        <field name="name">Internal Medicine</field>
+        <field name="description">Works with the inner body.</field>
+    </record>
+
+    <record id="demo_health_specialty_03" model="health.specialty">
+        <field name="name">Infectious Disease</field>
+        <field name="description">Works with infections.</field>
+    </record>
+
+    <record id="demo_health_specialty_04" model="health.specialty">
+        <field name="name">Pediatrician</field>
+        <field name="description">Works with kids.</field>
+    </record>
+
+    <record id="demo_health_specialty_05" model="health.specialty">
+        <field name="name">Neurology</field>
+        <field name="description">Works with the brain.</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!--    Main App Menu  -->
+
+    <menuitem
+            id="health_appointments_main_menu"
+            name="Health Appointments"
+            sequence="2"
+            groups="health_appointments_group_user"
+            action="health_appointment_action"
+    />
+
+        <!--    Doctor Related Menus  -->
+
+        <menuitem
+                id="health_doctors_menu"
+                name="Doctors"
+                sequence="0"
+                parent="health_appointments_main_menu"
+                groups="health_appointments_group_user"
+        />
+
+            <menuitem
+                    id="health_specialty_menu"
+                    name="Doctor's Specialties"
+                    sequence="0"
+                    parent="health_doctors_menu"
+                    action="health_specialty_action"
+                    groups="health_appointments_group_user"
+            />
+
+            <menuitem
+                    id="health_doctor_menu"
+                    name="Doctors"
+                    sequence="0"
+                    parent="health_doctors_menu"
+                    action="health_doctor_action"
+                    groups="health_appointments_group_user"
+            />
+
+        <!--    Patients and Appointments Menus  -->
+
+        <menuitem
+                id="health_patients_section_menu"
+                name="Patients"
+                sequence="0"
+                parent="health_appointments_main_menu"
+                groups="health_appointments_group_user"
+        />
+
+            <menuitem
+                    id="health_patients_menu"
+                    name="Patients"
+                    sequence="0"
+                    parent="health_patients_section_menu"
+                    groups="health_appointments_group_user"
+                    action="health_patient_action"
+            />
+
+            <menuitem
+                    id="menu_health_appointment"
+                    name="Appointments"
+                    sequence="0"
+                    parent="health_patients_section_menu"
+                    groups="health_appointments_group_user"
+                    action="health_appointment_action"
+            />
+
+</odoo>

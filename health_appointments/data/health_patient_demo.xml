@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="partner_demo_1" model="res.partner">
+        <field name="name">John Smith</field>
+        <field name="phone">1234567890</field>
+        <field name="email">john@example.com</field>
+        <field name="city">New York</field>
+        <field name="vat">US123456789</field>
+        <field name="is_patient" eval="True"/>
+        <field name="clinical_history">Fever, cough, sore throat, headache, body aches</field>
+    </record>
+
+    <record id="partner_demo_2" model="res.partner">
+        <field name="name">Alice Johnson</field>
+        <field name="phone">9876543210</field>
+        <field name="email">alice@example.com</field>
+        <field name="city">Los Angeles</field>
+        <field name="vat">US987654321</field>
+        <field name="is_patient" eval="True"/>
+        <field name="clinical_history">Shortness of breath, fatigue, loss of taste or smell</field>
+    </record>
+
+    <record id="partner_demo_3" model="res.partner">
+        <field name="name">Michael Brown</field>
+        <field name="phone">5555555555</field>
+        <field name="email">michael@example.com</field>
+        <field name="city">Chicago</field>
+        <field name="vat">US555555555</field>
+        <field name="is_patient" eval="True"/>
+        <field name="clinical_history">Fever, chills, muscle pain, vomiting, diarrhea</field>
+    </record>
+
+    <record id="partner_demo_4" model="res.partner">
+        <field name="name">Emily Williams</field>
+        <field name="phone">1112223333</field>
+        <field name="email">emily@example.com</field>
+        <field name="city">Houston</field>
+        <field name="vat">US111222333</field>
+        <field name="is_patient" eval="True"/>
+        <field name="clinical_history">Dizziness, nausea, abdominal pain, chest tightness</field>
+    </record>
+
+    <record id="partner_demo_5" model="res.partner">
+        <field name="name">Daniel Martinez</field>
+        <field name="phone">9998887777</field>
+        <field name="email">daniel@example.com</field>
+        <field name="city">Miami</field>
+        <field name="vat">US999888777</field>
+        <field name="is_patient" eval="True"/>
+        <field name="clinical_history">Frequent urination, thirst, blurred vision, fatigue</field>
+    </record>
+
+</odoo>

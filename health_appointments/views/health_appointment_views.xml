@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="health_appointment_view_tree" model="ir.ui.view">
+        <field name="name">health.appointment.view.tree</field>
+        <field name="model">health.appointment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="doctor_id"/>
+                <field name="patient_id"/>
+                <field name="date"/>
+                <field name="time" widget="float_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="health_appointment_view_form" model="ir.ui.view">
+        <field name="name">health.appointment.view.form</field>
+        <field name="model">health.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <div class="oe_title" style="display: inline-block;">
+                            <h1 style="display: inline;">
+                                <field name="name" widget="html" options="{'style': 'color: black; font-weight: bold;'}"/>
+                            </h1>
+                            <h4 style="display: inline;">
+                                <field name="display_name"/>
+                            </h4>
+                        </div>
+                    </group>
+                    <group>
+                        <group name="patient_info">
+                            <field name="patient_id"/>
+                            <field name="doctor_id"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="time" widget="float_time"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="remarks"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="health_appointment_action" model="ir.actions.act_window">
+        <field name="name">Patient Appointments</field>
+        <field name="res_model">health.appointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('health_appointment_view_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('health_appointment_view_form')})]"
+        />
+    </record>
+
+</odoo>

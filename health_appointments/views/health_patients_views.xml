@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="health_patient_view_tree" model="ir.ui.view">
+        <field name="name">health.patient.view.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="/tree//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="optional">hide</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="health_patient_view_form" model="ir.ui.view">
+        <field name="name">health.patient.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet//field[@name='function']" position="before">
+                <field name="is_patient"/>
+            </xpath>
+            <xpath expr="/form/sheet/notebook/page[@name='sales_purchases']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('is_company', '=', True), ('is_patient', '=', True)]}
+                </attribute>
+            </xpath>
+            <xpath expr="/form/sheet/notebook" position="inside">
+                <page name="patient_history" string="Patient History"
+                      attrs="{'invisible': [('is_patient', '=', False)]}">
+                    <group string="Clinical History">
+                        <field name="clinical_history"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="health_patient_action" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('health_patient_view_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('health_patient_view_form')})]"
+        />
+        <field name="context">{'default_is_patient': 1, 'is_company': 0}</field>
+        <field name="domain">[('is_patient', '=', 1)]</field>
+    </record>
+
+</odoo>
