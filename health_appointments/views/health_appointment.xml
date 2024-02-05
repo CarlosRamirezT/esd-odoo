@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <data>
+
+        <record id="view_health_appointment_tree" model="ir.ui.view">
+            <field name="name">health.appointment.tree</field>
+            <field name="model">health.appointment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="doctor_id"/>
+                    <field name="patient_id"/>
+                    <field name="date"/>
+                    <field name="time"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_health_appointment_form" model="ir.ui.view">
+            <field name="name">health.appointment.form</field>
+            <field name="model">health.appointment</field>
+            <field name="arch" type="xml">
+               <form>
+                   <sheet>
+                       <group>
+                           <field name="name"/>
+                       </group>
+                       <group>
+                           <group name="patient_info">
+                               <field name="patient_id"/>
+                               <field name="doctor_id"/>
+                           </group>
+                           <group>
+                               <field name="date"/>
+                               <field name="time" widget="float_time"/>
+                           </group>
+                       </group>
+                       <group>
+                           <field name="remarks"/>
+                       </group>
+                   </sheet>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_health_appointment" model="ir.actions.act_window">
+            <field name="name">Patient Appointments</field>
+            <field name="res_model">health.appointment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('view_health_appointment_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('view_health_appointment_form')})]"
+            />
+        </record>
+
+
+        <menuitem
+                id="menu_health_appointment"
+                name="Appointments"
+                sequence="0"
+                parent="menu_health_patients_section"
+                groups="group_health_user"
+                action="action_health_appointment"
+        />
+
+    </data>
+
+</odoo>

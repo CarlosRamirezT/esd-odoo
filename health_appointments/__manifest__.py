@@ -16,12 +16,13 @@
         "security/ir.model.access.csv",
         "views/health_specialty.xml",
         "views/health_doctors.xml",
-        "views/health_patients.xml"
+        "views/health_patients.xml",
+        "views/health_appointment.xml",
     ],
     "demo": [
         "demo/demo_health_specialty.xml",
         "demo/demo_health_doctor.xml",
-        "demo/demo_health_patient.xml"
+        "demo/demo_health_patient.xml",
     ],
     "application": True,
 }

@@ -5,18 +5,31 @@ class HealthAppointment(models.Model):
     _name = "health.appointment"
     _description = "Manage your patient's appointments"
 
-    name = fields.Char("Name", readonly=True)
+    name = fields.Char(
+        "Name", readonly=True, compute="_compute_name", store=True
+    )
     patient_id = fields.Many2one(
-        "health.patient", string="Patient's Name", required=True
+        "res.partner",
+        string="Patient's Name",
+        required=True,
+        domain="[('is_patient', '=', True)]",
     )
-    doctor_id = fields.Many2one("health.doctor", string="Doctor's name", required=True)
+    doctor_id = fields.Many2one(
+        "health.doctor", string="Doctor's name", required=True
+    )
     date = fields.Date(
-        "Appointment Date", help="The date of this appointment.", required=True
+        "Appointment Date",
+        help="The date of this appointment.",
+        required=True,
     )
-    time = fields.Datetime(
-        "Appointment Time", help="The hour of this appointment.", required=True
+    time = fields.Float(
+        "Appointment Time",
+        help="The hour of this appointment.",
+        required=True,
     )
-    remarks = fields.Text("Remarks", help="Any other details as per necessary")
+    remarks = fields.Text(
+        "Remarks", help="Any other details as per necessary"
+    )
 
     _sql_constraints = [
         (
@@ -26,7 +39,19 @@ class HealthAppointment(models.Model):
         )
     ]
 
-    @api.onchange("patient_id", "doctor_id", "date")
-    def _onchange_name(self):
-        new_name = f"{self.patient_id.name}'s Appointment with {self.doctor_id.name} on {self.date}"
-        self.name = new_name
+    @api.depends("patient_id", "doctor_id", "date")
+    def _compute_name(self):
+        for appointment in self:
+            if (
+                appointment.patient_id
+                and appointment.doctor_id
+                and appointment.date
+            ):
+                new_name = (
+                    f"{appointment.patient_id.name}'s Appointment with "
+                    f"{appointment.doctor_id.name} "
+                    f"on {appointment.date}"
+                )
+            else:
+                new_name = False
+            appointment.name = new_name
