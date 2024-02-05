@@ -21,30 +21,32 @@
             <field name="model">health.doctor</field>
             <field name="arch" type="xml">
                 <form string="Doctors">
-                    <group>
-                        <group id="personal_info" string="Personal Information">
-                            <field name="name"/>
-                            <field name="last_name"/>
-                            <field name="identification"/>
+                    <sheet>
+                        <group>
+                            <group id="personal_info" string="Personal Information">
+                                <field name="name"/>
+                                <field name="last_name"/>
+                                <field name="identification"/>
+                            </group>
+                            <group id="professional_info" string="Professional Information">
+                                <field name="specialty_ids" widget="many2many_tags"/>
+                            </group>
                         </group>
-                        <group id="professional_info" string="Professional Information">
-                            <field name="specialty_ids" widget="many2many_tags"/>
-                        </group>
-                    </group>
-                    <notebook>
-                        <page name='doctor_schedule' string="Doctor Schedule">
-                            <field name="schedule_day_ids"
-                                   widget="one2many"
-                                   mode="tree"
-                            >
-                                <tree editable="bottom" string="Doctor Schedule" default_order="day_of_week">
-                                    <field name="day_of_week"/>
-                                    <field name="shift_start" widget="float_time"/>
-                                    <field name="shift_end" widget="float_time"/>
-                                </tree>
-                            </field>
-                        </page>
-                    </notebook>
+                        <notebook>
+                            <page name='doctor_schedule' string="Doctor Schedule">
+                                <field name="schedule_day_ids"
+                                       widget="one2many"
+                                       mode="tree"
+                                >
+                                    <tree editable="bottom" string="Doctor Schedule" default_order="day_of_week">
+                                        <field name="day_of_week"/>
+                                        <field name="shift_start" widget="float_time"/>
+                                        <field name="shift_end" widget="float_time"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
                 </form>
             </field>
         </record>
