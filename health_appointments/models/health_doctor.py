@@ -5,6 +5,8 @@ class HealthDoctor(models.Model):
     _name = "health.doctor"
     _description = "Your hospital doctors"
 
+    # field declarations
+
     name = fields.Char("Name", required=True)
     last_name = fields.Char("Last Name", required=True)
     identification = fields.Char("Identification", required=True)
@@ -21,6 +23,8 @@ class HealthDoctor(models.Model):
         "doctor_id",
         string="Doctor Schedule Days",
     )
+
+    # business methods
 
     def is_available(self, date, hour):
         """

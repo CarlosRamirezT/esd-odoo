@@ -8,6 +8,21 @@ class HealthAppointment(models.Model):
     _name = "health.appointment"
     _description = "Manage your patient's appointments"
 
+    # sql constraints
+
+    _sql_constraints = [
+
+        # prevent more than one appointment per doctor, per hour
+        (
+            "doctor_date_unique",
+            "unique(doctor_id, date, time)",
+            "You can only book one appointment per hour for each doctor! Select a different hour or a different doctor.",
+        )
+
+    ]
+
+    # field declarations
+
     name = fields.Char(
         "Name",
         readonly=True,
@@ -41,38 +56,17 @@ class HealthAppointment(models.Model):
         "Remarks", help="Any other details as per necessary"
     )
 
-    _sql_constraints = [
-        (
-            "doctor_date_unique",
-            "unique(doctor_id, date, time)",
-            "You can only book one appointment per hour for each doctor! Select a different hour or a different doctor.",
-        )
-    ]
-
-    @api.model
-    def create(self, vals):
-        new_code = self._generate_appointment_code()
-        vals.update(name=new_code)
-        return super(HealthAppointment, self).create(vals)
+    # compute, inverse, search and onchange methods
 
     @api.depends("patient_id", "doctor_id", "date")
     def _compute_name(self):
         for appointment in self:
             appointment.display_name = self._get_appointment_name()
 
-    @api.constrains("doctor_id", "date", "time")
-    def _check_doctor_availability(self):
-        for appointment in self:
-            if not self.doctor_id.is_available(
-                date=appointment.date, hour=appointment.time
-            ):
-                raise exceptions.ValidationError(
-                    "The selected doctor is not available at the appointment time. "
-                    "Please select another time or doctor."
-                )
+    # selection and get methods
 
     @api.model
-    def _generate_appointment_code(self):
+    def _get_appointment_code(self):
         chars = string.digits
         return "".join(random.choice(chars) for _ in range(8))
 
@@ -85,3 +79,23 @@ class HealthAppointment(models.Model):
             )
         else:
             return False
+
+    # constraint methods
+
+    @api.constrains("doctor_id", "date", "time")
+    def _check_doctor_availability(self):
+        for appointment in self:
+            if not self.doctor_id.is_available(
+                date=appointment.date, hour=appointment.time
+            ):
+                raise exceptions.ValidationError(
+                    "The selected doctor is not available at the appointment time. "
+                    "Please select another time or doctor."
+                )
+
+    # CRUD override methods
+    @api.model
+    def create(self, vals):
+        new_code = self._get_appointment_code()
+        vals.update(name=new_code)
+        return super(HealthAppointment, self).create(vals)
