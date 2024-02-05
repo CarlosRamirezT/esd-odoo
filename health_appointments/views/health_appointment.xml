@@ -22,7 +22,14 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
+                        <div class="oe_title" style="display: inline-block;">
+                            <h1 style="display: inline;">
+                                <field name="name" widget="html" options="{'style': 'color: black; font-weight: bold;'}"/>
+                            </h1>
+                            <h4 style="display: inline;">
+                                <field name="display_name"/>
+                            </h4>
+                        </div>
                     </group>
                     <group>
                         <group name="patient_info">

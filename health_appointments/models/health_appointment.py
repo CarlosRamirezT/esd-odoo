@@ -1,3 +1,6 @@
+import random
+import string
+
 from odoo import api, models, fields, exceptions
 
 
@@ -6,7 +9,10 @@ class HealthAppointment(models.Model):
     _description = "Manage your patient's appointments"
 
     name = fields.Char(
-        "Name", readonly=True, compute="_compute_name", store=True
+        "Name", readonly=True,
+    )
+    display_name = fields.Char(
+        "Display Name", readonly=True, compute="_compute_name", store=True
     )
     patient_id = fields.Many2one(
         "res.partner",
@@ -39,6 +45,12 @@ class HealthAppointment(models.Model):
         )
     ]
 
+    @api.model
+    def create(self, vals):
+        new_code = self._generate_appointment_code()
+        vals["name"] = new_code
+        return super(HealthAppointment, self).create(vals)
+
     @api.depends("patient_id", "doctor_id", "date")
     def _compute_name(self):
         for appointment in self:
@@ -54,7 +66,7 @@ class HealthAppointment(models.Model):
                 )
             else:
                 new_name = False
-            appointment.name = new_name
+            appointment.display_name = new_name
 
     @api.constrains("doctor_id", "date", "time")
     def _check_doctor_availability(self):
@@ -78,3 +90,8 @@ class HealthAppointment(models.Model):
                     "The selected doctor is not available at the appointment time. "
                     "Please select another time or doctor."
                 )
+
+    @api.model
+    def _generate_appointment_code(self):
+        chars = string.digits
+        return "".join(random.choice(chars) for _ in range(8))
