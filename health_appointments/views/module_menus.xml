@@ -4,58 +4,58 @@
     <!--    Main App Menu  -->
 
     <menuitem
-            id="menu_health_appointments_main"
+            id="health_appointments_main_menu"
             name="Health Appointments"
             sequence="2"
-            groups="group_health_manager"
-            action="action_health_appointment"
+            groups="health_appointments_group_manager"
+            action="health_appointment_action"
     />
 
         <!--    Doctor Related Menus  -->
 
         <menuitem
-                id="menu_health_doctors"
+                id="health_doctors_menu"
                 name="Doctors"
                 sequence="0"
-                parent="menu_health_appointments_main"
-                groups="group_health_manager"
+                parent="health_appointments_main_menu"
+                groups="health_appointments_group_manager"
         />
 
             <menuitem
-                    id="menu_health_specialty"
+                    id="health_specialty_menu"
                     name="Doctor's Specialties"
                     sequence="0"
-                    parent="menu_health_doctors"
-                    action="action_health_specialty"
-                    groups="group_health_manager"
+                    parent="health_doctors_menu"
+                    action="health_specialty_menu"
+                    groups="health_appointments_group_manager"
             />
 
             <menuitem
-                    id="menu_health_doctor"
+                    id="health_doctor_menu"
                     name="Doctors"
                     sequence="0"
-                    parent="menu_health_doctors"
-                    action="action_health_doctor"
-                    groups="group_health_manager"
+                    parent="health_doctors_menu"
+                    action="health_doctor_action"
+                    groups="health_appointments_group_manager"
             />
 
         <!--    Patients and Appointments Menus  -->
 
         <menuitem
-                id="menu_health_patients_section"
+                id="health_patients_section_menu"
                 name="Patients"
                 sequence="0"
-                parent="menu_health_appointments_main"
-                groups="group_health_manager"
+                parent="health_appointments_main_menu"
+                groups="health_appointments_group_manager"
         />
 
             <menuitem
-                    id="menu_health_patients"
+                    id="health_patients_menu"
                     name="Patients"
                     sequence="0"
-                    parent="menu_health_patients_section"
-                    groups="group_health_user"
-                    action="action_health_patient"
+                    parent="health_patients_section_menu"
+                    groups="health_appointments_group_user"
+                    action="health_patient_action"
             />
 
             <menuitem
@@ -63,7 +63,7 @@
                     name="Appointments"
                     sequence="0"
                     parent="menu_health_patients_section"
-                    groups="group_health_user"
+                    groups="health_appointments_group_user"
                     action="action_health_appointment"
             />
 

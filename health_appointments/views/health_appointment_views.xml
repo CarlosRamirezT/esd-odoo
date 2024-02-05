@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
-    <record id="view_health_appointment_tree" model="ir.ui.view">
-        <field name="name">health.appointment.tree</field>
+    <record id="health_appointment_view_tree" model="ir.ui.view">
+        <field name="name">health.appointment.view.tree</field>
         <field name="model">health.appointment</field>
         <field name="arch" type="xml">
             <tree>
@@ -15,8 +15,8 @@
         </field>
     </record>
 
-    <record id="view_health_appointment_form" model="ir.ui.view">
-        <field name="name">health.appointment.form</field>
+    <record id="health_appointment_view_form" model="ir.ui.view">
+        <field name="name">health.appointment.view.form</field>
         <field name="model">health.appointment</field>
         <field name="arch" type="xml">
             <form>
@@ -49,14 +49,14 @@
         </field>
     </record>
 
-    <record id="action_health_appointment" model="ir.actions.act_window">
+    <record id="health_appointment_action" model="ir.actions.act_window">
         <field name="name">Patient Appointments</field>
         <field name="res_model">health.appointment</field>
         <field name="view_mode">tree,form</field>
         <field name="view_ids"
                eval="[(5, 0, 0),
-                          (0, 0, {'view_mode': 'tree', 'view_id': ref('view_health_appointment_tree')}),
-                          (0, 0, {'view_mode': 'form', 'view_id': ref('view_health_appointment_form')})]"
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('health_appointment_view_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('health_appointment_view_form')})]"
         />
     </record>
 
