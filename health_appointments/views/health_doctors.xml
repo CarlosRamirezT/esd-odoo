@@ -1,67 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
-    <data>
+    <record id="view_health_doctor_tree" model="ir.ui.view">
+        <field name="name">health.doctor.tree</field>
+        <field name="model">health.doctor</field>
+        <field name="arch" type="xml">
+            <tree string="Doctors">
+                <field name="name" string="Name"/>
+                <field name="last_name"/>
+                <field name="identification" optional="show"/>
+                <field name="specialty_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
 
-        <record id="view_health_doctor_tree" model="ir.ui.view">
-            <field name="name">health.doctor.tree</field>
-            <field name="model">health.doctor</field>
-            <field name="arch" type="xml">
-                <tree string="Doctors">
-                    <field name="name" string="Name"/>
-                    <field name="last_name"/>
-                    <field name="identification" optional="show"/>
-                    <field name="specialty_ids" widget="many2many_tags"/>
-                </tree>
-            </field>
-        </record>
-
-        <record id="health_doctor_form_view" model="ir.ui.view">
-            <field name="name">health.doctor.form.view</field>
-            <field name="model">health.doctor</field>
-            <field name="arch" type="xml">
-                <form string="Doctors">
-                    <sheet>
-                        <group>
-                            <group id="personal_info" string="Personal Information">
-                                <field name="name"/>
-                                <field name="last_name"/>
-                                <field name="identification"/>
-                            </group>
-                            <group id="professional_info" string="Professional Information">
-                                <field name="specialty_ids" widget="many2many_tags"/>
-                            </group>
+    <record id="health_doctor_form_view" model="ir.ui.view">
+        <field name="name">health.doctor.form.view</field>
+        <field name="model">health.doctor</field>
+        <field name="arch" type="xml">
+            <form string="Doctors">
+                <sheet>
+                    <group>
+                        <group id="personal_info" string="Personal Information">
+                            <field name="name"/>
+                            <field name="last_name"/>
+                            <field name="identification"/>
                         </group>
-                        <notebook>
-                            <page name='doctor_schedule' string="Doctor Schedule">
-                                <field name="schedule_day_ids"
-                                       widget="one2many"
-                                       mode="tree"
-                                >
-                                    <tree editable="bottom" string="Doctor Schedule" default_order="day_of_week">
-                                        <field name="day_of_week"/>
-                                        <field name="shift_start" widget="float_time"/>
-                                        <field name="shift_end" widget="float_time"/>
-                                    </tree>
-                                </field>
-                            </page>
-                        </notebook>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+                        <group id="professional_info" string="Professional Information">
+                            <field name="specialty_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name='doctor_schedule' string="Doctor Schedule">
+                            <field name="schedule_day_ids"
+                                   widget="one2many"
+                                   mode="tree"
+                            >
+                                <tree editable="bottom" string="Doctor Schedule" default_order="day_of_week">
+                                    <field name="day_of_week"/>
+                                    <field name="shift_start" widget="float_time"/>
+                                    <field name="shift_end" widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-        <record id="action_health_doctor" model="ir.actions.act_window">
-            <field name="name">Doctors</field>
-            <field name="res_model">health.doctor</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_ids"
-                   eval="[(5, 0, 0),
+    <record id="action_health_doctor" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">health.doctor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
                           (0, 0, {'view_mode': 'tree', 'view_id': ref('view_health_doctor_tree')}),
                           (0, 0, {'view_mode': 'form', 'view_id': ref('health_doctor_form_view')})]"
-            />
-        </record>
-
-    </data>
+        />
+    </record>
 
 </odoo>
